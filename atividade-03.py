@@ -1,9 +1,28 @@
+
 import os
 
-# Função sem retorno.
+# Entrada
+
 def logoSenai():
     os.system("cls || clear")
     print("=== SENAI === ")
+
+def calcular_imc(peso, altura):
+    return peso / (altura** 2)
+
+def exibir (imc):
+    if imc > 18.5:
+        print("Você está abaixo do peso.")
+    elif imc >= 18.5 and imc <=24.9:
+        print("Peso ideal")
+    elif imc >= 25 and imc <=29.9:
+        print("Você está com sobre peso")
+    elif imc >= 30 and imc <=34.9:
+        print("Você está com obesidade grau 1")
+    elif imc >= 35 and imc <=39.9:
+        print("Você está com obesidade grau 2")
+    else:
+        print("GRAVE!!! Obesidade grau 3")
 
 # Definindo listas vazias para armazenar os dados dos usuários
 nomes = []
@@ -23,6 +42,10 @@ while True:
     idade = int(input("Digite a idade do usuário: "))
     altura = float(input("Digite a altura do usuário (em metros): "))
     peso = float(input("Digite o peso do usuário (em quilogramas): "))
+
+    # Dando valor as funções
+    imc = calcular_imc (peso, altura)
+    exibindo = exibir(imc)
     
     # Adicionando os dados às listas
     nomes.append(nome)
@@ -39,4 +62,5 @@ for i in range(len(nomes)):
     print("Idade:", idades[i])
     print("Altura:", alturas[i], "metros")
     print("Peso:", pesos[i], "quilogramas")
-    print()
+    print(f"Seu indice de massa corporal é: {imc:.2f}")
+    exibir(imc)
